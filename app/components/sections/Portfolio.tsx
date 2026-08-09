@@ -78,6 +78,19 @@ const projects: Project[] = [
       video: "/portfolio/shramik-about.mp4",
     },
   },
+  {
+  number: "04",
+  title: "VETRONIX ERP",
+  category: "Enterprise · ERP · Admin Platform",
+  description:
+    "A powerful enterprise management platform designed to streamline employee operations, attendance, field activities, tours, sales tracking, incentives, products, and business reporting through a unified admin experience.",
+  tags: ["ERP", "Admin Panel", "React", "Management"],
+  href: "https://vtronix-admin.vercel.app/",
+  preview: {
+    type: "browser",
+    video: "/portfolio/vetronix.mp4",
+  },
+},
 ];
 
 /* -------------------------------------------------------------------------- */
