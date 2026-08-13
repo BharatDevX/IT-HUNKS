@@ -35,8 +35,8 @@ export default function Footer() {
             <p className="mt-5 max-w-sm text-sm leading-7 text-zinc-500">
               Premium websites, mobile applications, AI integrations, and digital products engineered to help ambitious businesses grow.
             </p>
-            <a href="mailto:lalwanibharat74@gmail.com" className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-zinc-300 transition-colors hover:text-blue-300">
-              <Mail className="size-4 text-blue-400" /> lalwanibharat74@gmail.com
+            <a href="mailto:ithunks.in@gmail.com" className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-zinc-300 transition-colors hover:text-blue-300">
+              <Mail className="size-4 text-blue-400" /> ithunks.in@gmail.com
               <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
