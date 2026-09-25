@@ -27,24 +27,24 @@ export default function FinalCTA() {
             <Sparkles className="size-3.5 text-blue-400" /> Your next chapter starts here
           </div>
           <h2 className="mx-auto max-w-4xl font-heading text-4xl font-semibold leading-[1.02] tracking-[-0.055em] text-white sm:text-6xl lg:text-7xl">
-            Ready to Build <span className="hero-gradient-text">Something Amazing?</span>
+            Have a Business Problem? <span className="hero-gradient-text">Let’s Build the Solution.</span>
           </h2>
           <p className="mx-auto mt-7 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg">
-            Tell us what you are building. We will turn it into a clear plan and a digital experience your business can grow on.
+            Tell us what is slowing your business down. We will help turn the requirement into a clear scope, technology plan and delivery path.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <MagneticLink
-              href="mailto:contact@ithunks.com?subject=Free%20Project%20Consultation"
+              href="mailto:ithunks.in@gmail.com?subject=IT%20HUNKS%20Project%20Consultation"
               className="group flex items-center gap-2.5 rounded-full bg-blue-500 px-7 py-4 text-sm font-semibold text-white shadow-[0_0_40px_rgba(59,130,246,.35)] transition-colors hover:bg-blue-400"
             >
-              <CalendarDays className="size-4" /> Get Free Consultation
+              <CalendarDays className="size-4" /> Talk to IT HUNKS
             </MagneticLink>
             <MagneticLink
-              href="mailto:contact@ithunks.com?subject=Start%20a%20Project"
+              href="https://wa.me/919528681406?text=Hi%20IT%20HUNKS%2C%20I%20want%20to%20discuss%20a%20project."
               strength={0.14}
               className="group flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-7 py-4 text-sm font-semibold text-zinc-200 backdrop-blur-xl transition-colors hover:border-blue-400/35 hover:bg-blue-500/10"
             >
-              Start Project <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+              WhatsApp Us <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </MagneticLink>
           </div>
         </div>

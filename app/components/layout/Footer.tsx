@@ -5,19 +5,19 @@ import Link from "next/link";
 const quickLinks = [
   ["About", "#about"],
   ["Services", "#services"],
-  ["Portfolio", "#portfolio"],
+  ["Work", "#portfolio"],
   ["Process", "#process"],
   ["Pricing", "#pricing"],
-  ["FAQ", "#faq"],
+  ["FAQs", "#faq"],
 ];
 
 const services = [
-  "Website Development",
-  "Mobile App Development",
-  "AI Integration",
-  "UI/UX Design",
-  "API Development",
-  "SEO Optimization",
+  "Custom Software",
+  "Web & Mobile App Development",
+  "CRM & ERP",
+  "AI Solutions / AI Chatbots",
+  "Business Dashboards",
+  "Digital Marketing",
 ];
 
 export default function Footer() {
@@ -33,12 +33,12 @@ export default function Footer() {
               <span className="font-heading text-xl font-semibold tracking-[0.12em]">IT <span className="text-blue-400">HUNKS</span></span>
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-7 text-zinc-500">
-              Premium websites, mobile applications, AI integrations, and digital products engineered to help ambitious businesses grow.
+              Custom software, web and mobile apps, CRM/ERP, AI solutions, business dashboards and digital marketing built around real business needs.
             </p>
-            <a href="mailto:ithunks.in@gmail.com" className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-zinc-300 transition-colors hover:text-blue-300">
-              <Mail className="size-4 text-blue-400" /> ithunks.in@gmail.com
-              <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            <div className="mt-6 space-y-3">
+              <a href="mailto:ithunks.in@gmail.com" className="group flex items-center gap-2 text-sm font-medium text-zinc-300 transition-colors hover:text-blue-300"><Mail className="size-4 text-blue-400" /> ithunks.in@gmail.com <ArrowUpRight className="size-3.5" /></a>
+              <a href="tel:+919528681406" className="group flex items-center gap-2 text-sm font-medium text-zinc-300 transition-colors hover:text-blue-300"><span className="text-blue-400">☎</span> +91 9528681406</a>
+            </div>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-zinc-200">Quick Links</h3>
@@ -54,7 +54,7 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="text-sm font-semibold text-zinc-200">Connect</h3>
-            <p className="mt-5 text-sm leading-6 text-zinc-500">Available for projects worldwide. Let’s make the internet a little better.</p>
+            <p className="mt-5 text-sm leading-6 text-zinc-500">Available for business projects. Tell us the problem, and we will help map the right technology solution.</p>
             <div className="mt-6 flex gap-2">
               {[
                 { label: "LinkedIn", href: "https://www.linkedin.com", icon: AtSign },

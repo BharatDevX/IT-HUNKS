@@ -6,12 +6,12 @@ import { useState } from "react";
 import SectionHeading from "../ui/SectionHeading";
 
 const faqs = [
-  { question: "How long does a typical project take?", answer: "A focused website usually takes 4-5 days, while larger websites and mobile applications typically take 9-10 days. After discovery, you receive a clear timeline with milestones." },
+  { question: "How long does a typical project take?", answer: "We prioritize fast delivery, but the exact timeline depends on scope, integrations and approvals. After discovery, you receive a clear timeline with milestones." },
   { question: "What do you need from me to get started?", answer: "We begin with your goals, audience, offer, and any existing brand material. If some pieces are missing, we help structure them during the planning phase." },
-  { question: "Are database integration and maintenance really free?", answer: "Yes. Eligible packages include database integration and six months of free post-launch maintenance. The exact coverage is documented clearly in your project scope." },
+  { question: "Are database integration and maintenance really free?", answer: "Database integration is included where applicable, and the packages on this page include one month of free post-launch maintenance for the agreed scope. The exact coverage is documented clearly in your project scope." },
   { question: "Will my website be optimized for search engines?", answer: "Every build includes technical SEO foundations: semantic structure, metadata, performance, responsive behavior, and crawlability. Broader content strategy can be scoped separately." },
   { question: "Can you work with an existing product or codebase?", answer: "Absolutely. We can audit, redesign, extend, or stabilize an existing website or app. We first review the codebase so recommendations are grounded in its actual condition." },
-  { question: "What happens after the product launches?", answer: "We monitor the release, resolve covered issues, and support ongoing improvements. Premium packages include six months of maintenance so launch is the beginning, not the handoff." },
+  { question: "What happens after the product launches?", answer: "We monitor the release, resolve covered issues, and support ongoing improvements. Our listed packages include one month of free maintenance so launch is not simply a handoff." },
 ];
 
 export default function FAQ() {
@@ -29,7 +29,7 @@ export default function FAQ() {
           />
           <p className="mt-8 text-sm text-zinc-500">
             Still curious?{" "}
-            <a href="mailto:contact@ithunks.com" className="font-medium text-blue-400 transition-colors hover:text-blue-300">
+            <a href="mailto:ithunks.in@gmail.com" className="font-medium text-blue-400 transition-colors hover:text-blue-300">
               Talk directly with our team.
             </a>
           </p>

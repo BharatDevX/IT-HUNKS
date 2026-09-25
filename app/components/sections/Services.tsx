@@ -2,27 +2,58 @@
 
 import { motion } from "framer-motion";
 import {
-  AppWindow,
+  BarChart3,
   Bot,
-  Braces,
-  Database,
-  Palette,
-  Search,
+  BriefcaseBusiness,
+  Code2,
+  Megaphone,
   Smartphone,
-  Wrench,
 } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading";
-import TiltCard from "../ui/TiltCard";
 
 const services = [
-  { icon: AppWindow, title: "Website Development", text: "High-converting, lightning-fast websites built for your brand and your next stage of growth.", tag: "Web" },
-  { icon: Smartphone, title: "App Development", text: "Polished cross-platform mobile experiences that feel responsive, intuitive, and native.", tag: "Mobile" },
-  { icon: Bot, title: "AI Integration", text: "Practical AI workflows, assistants, and automation designed around real business outcomes.", tag: "Intelligence" },
-  { icon: Search, title: "SEO Optimization", text: "Technical foundations and search-focused experiences that help the right customers find you.", tag: "Growth" },
-  { icon: Database, title: "Database Integration", text: "Secure, scalable data architecture that keeps your product reliable as usage grows.", tag: "Data" },
-  { icon: Wrench, title: "Maintenance", text: "Proactive monitoring, upgrades, bug fixes, and ongoing improvements after launch.", tag: "Care" },
-  { icon: Braces, title: "API Development", text: "Robust APIs and third-party integrations that make your systems work beautifully together.", tag: "Systems" },
-  { icon: Palette, title: "UI/UX Design", text: "Research-led interfaces with premium aesthetics, clear hierarchy, and effortless interaction.", tag: "Design" },
+  {
+    icon: Code2,
+    number: "01",
+    title: "Custom Software",
+    text: "Purpose-built business applications for workflows that standard software cannot handle cleanly.",
+    features: ["Business applications", "Custom workflows", "Automation & integrations", "Scalable architecture"],
+  },
+  {
+    icon: Smartphone,
+    number: "02",
+    title: "Web & Mobile App Development",
+    text: "High-performance websites and mobile products designed around your customers, operations and growth goals.",
+    features: ["Responsive web apps", "Android & iOS", "API & database integration", "Production deployment"],
+  },
+  {
+    icon: BriefcaseBusiness,
+    number: "03",
+    title: "CRM & ERP",
+    text: "Connected systems for sales, teams, inventory, field operations, distributors, expenses and reporting.",
+    features: ["Sales & orders", "Field force & visits", "Inventory & operations", "Reports & dashboards"],
+  },
+  {
+    icon: Bot,
+    number: "04",
+    title: "AI Solutions / AI Chatbots",
+    text: "Practical AI systems that automate support, knowledge access and repetitive business processes.",
+    features: ["GenAI & LLMs", "RAG knowledge assistants", "Customer chatbots", "AI automation"],
+  },
+  {
+    icon: BarChart3,
+    number: "05",
+    title: "Business Dashboards",
+    text: "Decision-ready dashboards that bring scattered business information into one clear operating view.",
+    features: ["BI & analytics", "MIS dashboards", "Lead & sales tracking", "Performance reporting"],
+  },
+  {
+    icon: Megaphone,
+    number: "06",
+    title: "Digital Marketing",
+    text: "Search, paid campaigns and social systems built to improve visibility, qualified leads and measurable growth.",
+    features: ["SEO & local SEO", "Google Business Profile", "Meta lead campaigns", "Content & social strategy"],
+  },
 ];
 
 export default function Services() {
@@ -32,39 +63,60 @@ export default function Services() {
       <div className="section-orb -right-64 top-1/3 bg-blue-500/10" />
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <SectionHeading
-          eyebrow="Our Services"
-          title="Everything you need to"
-          accent="build and scale."
-          description="One focused team for the entire digital product journey—from first sketch to launch and continuous growth."
+          eyebrow="What We Deliver"
+          title="Technology that solves"
+          accent="real business problems."
+          description="From customer-facing products to internal business systems, we design, build and launch solutions around the way your business actually works."
         />
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
-          {services.map(({ icon: Icon, title, text, tag }, index) => (
-            <motion.div
+
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
+          {services.map(({ icon: Icon, number, title, text, features }, index) => (
+            <motion.article
               key={title}
               initial={{ opacity: 0, y: 34 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.65, delay: (index % 4) * 0.07 }}
+              viewport={{ once: true, amount: 0.18 }}
+              transition={{ duration: 0.65, delay: (index % 3) * 0.07 }}
+              whileHover={{ y: -7 }}
+              className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0b0d11] p-6 shadow-[0_20px_70px_rgba(0,0,0,.16)] sm:p-7"
             >
-              <TiltCard className="h-full min-h-[290px] p-6">
-                <div className="relative z-10 flex h-full flex-col">
-                  <div className="flex items-start justify-between">
-                    <div className="grid size-12 place-items-center rounded-xl border border-blue-400/20 bg-blue-500/10 text-blue-300 shadow-[inset_0_1px_0_rgba(255,255,255,.06)]">
-                      <Icon className="size-5" />
-                    </div>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-600">{tag}</span>
-                  </div>
-                  <h3 className="mt-8 font-heading text-xl font-medium tracking-[-0.025em] text-zinc-100">{title}</h3>
-                  <p className="mt-4 text-sm leading-6 text-zinc-500 transition-colors group-hover:text-zinc-400">{text}</p>
-                  <div className="mt-auto flex items-center gap-2 pt-8 text-xs font-medium text-blue-400 opacity-70">
-                    <span className="h-px w-5 bg-blue-400" />
-                    Built to perform
-                  </div>
+              <div className="absolute -right-16 -top-16 size-40 rounded-full bg-blue-500/10 blur-3xl transition-all duration-500 group-hover:bg-blue-500/20" />
+              <div className="relative flex items-start justify-between gap-4">
+                <div className="grid size-12 place-items-center rounded-xl border border-blue-400/20 bg-blue-500/10 text-blue-300">
+                  <Icon className="size-5" />
                 </div>
-              </TiltCard>
-            </motion.div>
+                <span className="text-xs font-semibold tracking-[0.2em] text-zinc-600">{number}</span>
+              </div>
+              <h3 className="relative mt-7 font-heading text-2xl font-medium tracking-[-0.035em] text-white">{title}</h3>
+              <p className="relative mt-3 text-sm leading-6 text-zinc-500">{text}</p>
+              <ul className="relative mt-6 space-y-2.5 border-t border-white/[0.07] pt-5">
+                {features.map((feature) => (
+                  <li key={feature} className="flex items-center gap-2.5 text-xs text-zinc-300">
+                    <span className="size-1.5 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,.7)]" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <div className="relative mt-7 flex flex-wrap gap-2">
+                <span className="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.13em] text-blue-200">Fast delivery</span>
+                <span className="rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.13em] text-emerald-200">1 month free maintenance</span>
+              </div>
+            </motion.article>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          className="mt-6 flex flex-col items-start justify-between gap-5 rounded-2xl border border-blue-400/15 bg-gradient-to-r from-blue-500/[0.08] to-transparent p-6 sm:flex-row sm:items-center sm:p-7"
+        >
+          <div>
+            <p className="text-sm font-semibold text-white">One delivery promise across every service.</p>
+            <p className="mt-1 text-sm text-zinc-500">Fast execution, clear communication and one month of free post-launch maintenance.</p>
+          </div>
+          <a href="#contact" className="shrink-0 rounded-full bg-blue-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-400">Discuss your requirement</a>
+        </motion.div>
       </div>
     </section>
   );
