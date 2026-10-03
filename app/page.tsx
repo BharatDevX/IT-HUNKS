@@ -5,6 +5,7 @@ import SmoothScroll from "@/app/components/effects/SmoothScroll";
 import ScrollProgress from "@/app/components/effects/ScrollProgress";
 import About from "@/app/components/sections/About";
 import Services from "@/app/components/sections/Services";
+import AiShowcase from "@/app/components/sections/AiShowcase";
 import WhyChooseUs from "@/app/components/sections/WhyChooseUs";
 import Process from "@/app/components/sections/Process";
 import Portfolio from "@/app/components/sections/Portfolio";
@@ -24,10 +25,11 @@ export default function Home() {
       <SmoothScroll />
       <ScrollProgress />
       <Navbar />
-      <main id="main-content" className="overflow-hidden bg-[#050505] text-white">
+      <main id="main-content" className="overflow-x-clip bg-[#050505] text-white">
         <Hero />
         <About />
         <Services />
+        <AiShowcase />
         <WhyChooseUs />
         <Process />
         <Portfolio />

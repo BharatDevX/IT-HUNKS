@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
+  ArrowRight,
   BarChart3,
   Bot,
   BriefcaseBusiness,
@@ -39,6 +40,7 @@ const services = [
     title: "AI Solutions / AI Chatbots",
     text: "Practical AI systems that automate support, knowledge access and repetitive business processes.",
     features: ["GenAI & LLMs", "RAG knowledge assistants", "Customer chatbots", "AI automation"],
+    cta: { label: "Explore AI Solutions", href: "#ai-solutions" },
   },
   {
     icon: BarChart3,
@@ -70,7 +72,7 @@ export default function Services() {
         />
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
-          {services.map(({ icon: Icon, number, title, text, features }, index) => (
+          {services.map(({ icon: Icon, number, title, text, features, cta }, index) => (
             <motion.article
               key={title}
               initial={{ opacity: 0, y: 34 }}
@@ -97,6 +99,12 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
+              {cta && (
+                <a href={cta.href} className="group/cta relative mt-6 inline-flex items-center gap-2 rounded-full text-sm font-semibold text-blue-400 transition-colors hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
+                  {cta.label}
+                  <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
+                </a>
+              )}
               <div className="relative mt-7 flex flex-wrap gap-2">
                 <span className="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.13em] text-blue-200">Fast delivery</span>
                 <span className="rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.13em] text-emerald-200">1 month free maintenance</span>

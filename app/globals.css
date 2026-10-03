@@ -115,6 +115,17 @@ a {
   overflow: clip;
 }
 
+.ai-showcase-card {
+  transition:
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+  will-change: transform;
+}
+
+.ai-showcase-card:hover {
+  box-shadow: 0 -22px 70px rgba(0, 0, 0, 0.52);
+}
+
 .section-orb {
   position: absolute;
   z-index: -1;
