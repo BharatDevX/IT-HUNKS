@@ -20,9 +20,9 @@ export const PANEL_IDS: PanelId[] = ["dash", "phone", "sales", "flow", "map", "n
 
 /** World size of each panel plane [w, h]. Aspect ratios match the canvas "design" sizes in panels.ts. */
 export const PANEL_SIZE: Record<PanelId, [number, number]> = {
-  dash: [4.4, 2.75],
+  dash: [4.4, 2.13],
   phone: [1.05, 2.15],
-  sales: [1.9, 1.25],
+  sales: [1.9, 0.915],
   flow: [2.3, 1.05],
   map: [1.8, 1.35],
   notif: [1.5, 0.62],
