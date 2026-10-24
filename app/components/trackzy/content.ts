@@ -35,7 +35,7 @@ export const TRACKZY_COPY = {
   primaryCta: "Explore Trackzy",
   secondaryCta: "Build Your Solution",
   customizeLine: "Your business. Your workflows. Your Trackzy.",
-  previewNote: "Interface previews are illustrative and use sample data.",
+  previewNote: "Admin and mobile screens are from the Trackzy product; supporting panels are illustrative.",
 };
 
 /** Story captions, in scroll order. Stage index matches STAGES in layout.ts. */

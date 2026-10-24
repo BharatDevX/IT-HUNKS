@@ -5,7 +5,7 @@
  *
  * All figures are SAMPLE data for illustration only — never real employees, locations or customers.
  */
-import type { PanelId } from "./story-layout";
+import type { PanelId } from "./layout";
 
 export type PanelState = {
   /** Animation clock in seconds (frozen at 0 for reduced motion). */
@@ -664,6 +664,110 @@ function drawVariant(idx: number) {
   };
 }
 
+/* ─────────────────────────── real product screenshots ───────────────────────────
+ * The admin panel and employee app are shown with real Trackzy screenshots (public/trackzy/*.jpg).
+ * While an image loads a neutral frame is drawn; if it fails to load, the original illustrative drawing is used.
+ */
+type ShotId = "dash" | "tour" | "app1" | "app2" | "app3";
+const SHOT_SRC: Record<ShotId, string> = {
+  dash: "/trackzy/admin-dashboard.jpg",
+  tour: "/trackzy/admin-tour.jpg",
+  app1: "/trackzy/app-1.jpg",
+  app2: "/trackzy/app-2.jpg",
+  app3: "/trackzy/app-3.jpg",
+};
+type ShotRt = { img: HTMLImageElement | null; state: "idle" | "loading" | "ready" | "error" };
+const shotRt = {} as Record<ShotId, ShotRt>;
+(Object.keys(SHOT_SRC) as ShotId[]).forEach((k) => (shotRt[k] = { img: null, state: "idle" }));
+let shotsV = 0;
+const shotListeners = new Set<() => void>();
+
+/** Increments whenever a screenshot finishes loading (or fails) so canvases know to repaint. */
+export const shotsVersion = () => shotsV;
+export function onShotsChange(cb: () => void) {
+  shotListeners.add(cb);
+  return () => void shotListeners.delete(cb);
+}
+
+function shot(id: ShotId): ShotRt {
+  const r = shotRt[id];
+  if (r.state === "idle" && typeof Image !== "undefined") {
+    r.state = "loading";
+    const img = new Image();
+    img.decoding = "async";
+    const done = (state: "ready" | "error") => {
+      r.state = state;
+      shotsV++;
+      shotListeners.forEach((cb) => cb());
+    };
+    img.onload = () => done("ready");
+    img.onerror = () => done("error");
+    img.src = SHOT_SRC[id];
+    r.img = img;
+  }
+  return r;
+}
+
+/** Start loading every screenshot (call when a scene is created, so they are ready before the panels appear). */
+export function preloadShots() {
+  (Object.keys(SHOT_SRC) as ShotId[]).forEach(shot);
+}
+
+/** Draw an image to fill (x,y,w,h) with rounded corners, cropping overflow ("cover"), anchored to the top. */
+function drawCover(g: G, img: HTMLImageElement, x: number, y: number, w: number, h: number, r: number) {
+  const k = Math.max(w / img.naturalWidth, h / img.naturalHeight);
+  const sw = w / k;
+  const sh = h / k;
+  g.save();
+  rr(g, x, y, w, h, r);
+  g.clip();
+  g.imageSmoothingQuality = "high";
+  g.drawImage(img, (img.naturalWidth - sw) / 2, 0, sw, sh, x, y, w, h);
+  g.restore();
+}
+
+function drawWindowShot(id: ShotId, fallback: (g: G, st: PanelState) => void, W: number, H: number) {
+  return (g: G, st: PanelState) => {
+    const r = shot(id);
+    if (r.state === "error") return fallback(g, st);
+    windowFrame(g, W, H, 22);
+    if (r.state === "ready" && r.img) drawCover(g, r.img, 8, 8, W - 16, H - 16, 16);
+  };
+}
+
+/** A phone body (same chrome as the illustrative one) with a real app screenshot as its screen. */
+function drawPhoneBody(g: G, id: ShotId, ox: number, oy: number, k: number) {
+  const W = 520;
+  const H = 1064;
+  g.save();
+  g.translate(ox, oy);
+  g.scale(k, k);
+  box(g, 3, 3, W - 6, H - 6, 74, "#05080f", "rgba(150,185,255,0.55)", 5);
+  box(g, 18, 18, W - 36, H - 36, 60, "#f4f7fc");
+  const r = shot(id);
+  if (r.state === "ready" && r.img) drawCover(g, r.img, 18, 18, W - 36, H - 36, 60);
+  box(g, W / 2 - 54, 34, 108, 30, 15, "#02040a");
+  g.restore();
+}
+
+function drawPhoneShot(id: ShotId) {
+  return (g: G, st: PanelState) => {
+    if (shot(id).state === "error") return drawPhone(g, st);
+    drawPhoneBody(g, id, 0, 0, 1);
+  };
+}
+
+function drawCardShot(id: ShotId, idx: number) {
+  return (g: G, st: PanelState) => {
+    if (shot(id).state === "error") return drawVariant(idx)(g, st);
+    const W = 840;
+    const H = 1040;
+    windowFrame(g, W, H, 40);
+    const k = (H - 40) / 1064;
+    drawPhoneBody(g, id, (W - 520 * k) / 2, 20, k);
+  };
+}
+
 /* ─────────────────────────────── registry ─────────────────────────────── */
 
 export type PanelSpec = {
@@ -676,13 +780,13 @@ export type PanelSpec = {
 };
 
 export const PANEL_SPECS: Record<PanelId, PanelSpec> = {
-  dash: { w: 1280, h: 800, fps: 12, draw: drawDash },
-  phone: { w: 520, h: 1064, fps: 14, draw: drawPhone },
-  sales: { w: 760, h: 500, fps: 12, draw: drawSales },
+  dash: { w: 1280, h: 620, fps: 8, draw: drawWindowShot("dash", drawDash, 1280, 620) },
+  phone: { w: 520, h: 1064, fps: 8, draw: drawPhoneShot("app3") },
+  sales: { w: 760, h: 366, fps: 8, draw: drawWindowShot("tour", drawSales, 760, 366) },
   flow: { w: 920, h: 420, fps: 12, draw: drawFlow },
   map: { w: 720, h: 540, fps: 12, draw: drawMap },
   notif: { w: 600, h: 248, fps: 10, draw: drawNotif },
-  v1: { w: 840, h: 1040, fps: 10, draw: drawVariant(0) },
-  v2: { w: 840, h: 1040, fps: 10, draw: drawVariant(1) },
-  v3: { w: 840, h: 1040, fps: 10, draw: drawVariant(2) },
+  v1: { w: 840, h: 1040, fps: 8, draw: drawCardShot("app1", 0) },
+  v2: { w: 840, h: 1040, fps: 8, draw: drawCardShot("app2", 1) },
+  v3: { w: 840, h: 1040, fps: 8, draw: drawCardShot("app3", 2) },
 };

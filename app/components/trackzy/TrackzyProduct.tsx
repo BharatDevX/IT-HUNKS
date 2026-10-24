@@ -87,9 +87,9 @@ export default function TrackzyProduct() {
             className="relative mx-auto w-full max-w-[760px] pb-16 sm:pb-20"
           >
             <div aria-hidden="true" className="absolute inset-[6%] rounded-full bg-blue-500/20 blur-[100px]" />
-            <PanelPreview id="dash" label="Illustrative Trackzy admin dashboard showing sales, visits, attendance and team activity with sample data" className="relative drop-shadow-[0_30px_60px_rgba(0,0,0,.55)]" />
+            <PanelPreview id="dash" label="Trackzy admin panel dashboard showing employees, attendance, sales and payment overview" className="relative drop-shadow-[0_30px_60px_rgba(0,0,0,.55)]" />
             <div className="absolute -bottom-2 right-[-2%] w-[28%] min-w-[110px] sm:right-[2%]">
-              <PanelPreview id="phone" label="Illustrative Trackzy employee mobile app showing attendance, a route preview and visits" className="drop-shadow-[0_24px_50px_rgba(0,0,0,.6)]" />
+              <PanelPreview id="phone" label="Trackzy employee mobile app home screen showing attendance, kilometres, sales and quick actions" className="drop-shadow-[0_24px_50px_rgba(0,0,0,.6)]" />
             </div>
             <p className="absolute bottom-0 left-0 text-[11px] text-zinc-500">{TRACKZY_COPY.previewNote}</p>
           </motion.div>

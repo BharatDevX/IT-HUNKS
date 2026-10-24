@@ -14,8 +14,8 @@ import {
   smoothstep,
   type PanelId,
   type PoseId,
-} from "./story-layout";
-import { PANEL_SPECS } from "./panels";
+} from "./layout";
+import { PANEL_SPECS, preloadShots, shotsVersion } from "./panels";
 
 export type EcosystemOptions = {
   /** "hero": plays the 5-second intro once, then scroll-leave progress nudges the camera.
@@ -44,6 +44,7 @@ const CURVE_N = 36;
 export function createEcosystem(ctx: SceneContext, opts: EcosystemOptions): SceneInstance {
   const { THREE, lite, reduced } = ctx;
   const hero = opts.mode === "hero";
+  preloadShots();
   const renderer = createRenderer(ctx, 1.75);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
@@ -207,6 +208,7 @@ export function createEcosystem(ctx: SceneContext, opts: EcosystemOptions): Scen
     interval: number;
     revealStart: number;
     phase: number;
+    sv: number;
   };
   const quality = lite ? 0.55 : 1;
   const maxAniso = Math.min(4, renderer.capabilities.getMaxAnisotropy());
@@ -239,6 +241,7 @@ export function createEcosystem(ctx: SceneContext, opts: EcosystemOptions): Scen
       interval: 1 / (spec.fps * (lite ? 0.6 : 1)),
       revealStart: hero && !isVariant ? ENTRY[id].start + 0.5 : Infinity,
       phase: i * 1.7,
+      sv: -1,
     };
   });
 
@@ -394,7 +397,7 @@ export function createEcosystem(ctx: SceneContext, opts: EcosystemOptions): Scen
       // Redraw the UI texture at a throttled rate; hidden panels never draw.
       if (o > 0.03) {
         if (p.revealStart === Infinity) p.revealStart = Tm;
-        if (!p.drawn || Tm - p.last >= p.interval || (reduced && !p.drawn)) {
+        if (!p.drawn || p.sv !== shotsVersion() || Tm - p.last >= p.interval || (reduced && !p.drawn)) {
           const reveal = clamp01((Tm - p.revealStart) / 1.8);
           const spec = PANEL_SPECS[id];
           p.g.setTransform(p.q, 0, 0, p.q, 0, 0);
@@ -403,6 +406,7 @@ export function createEcosystem(ctx: SceneContext, opts: EcosystemOptions): Scen
           p.tex.needsUpdate = true;
           p.last = Tm;
           p.drawn = true;
+          p.sv = shotsVersion();
         }
       }
     });
