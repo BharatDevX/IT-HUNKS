@@ -3,8 +3,14 @@ import Hero from "@/app/components/hero/Hero";
 import CursorGlow from "@/app/components/effects/CursorGlow";
 import SmoothScroll from "@/app/components/effects/SmoothScroll";
 import ScrollProgress from "@/app/components/effects/ScrollProgress";
+import TrackzyStory from "@/app/components/trackzy/TrackzyStory";
+import TrackzyProduct from "@/app/components/trackzy/TrackzyProduct";
 import About from "@/app/components/sections/About";
 import Services from "@/app/components/sections/Services";
+import IdeasToProducts from "@/app/components/sections/IdeasToProducts";
+import AiIntelligence from "@/app/components/sections/AiIntelligence";
+import WebMobile from "@/app/components/sections/WebMobile";
+import SystemsScene from "@/app/components/sections/SystemsScene";
 import AiShowcase from "@/app/components/sections/AiShowcase";
 import WhyChooseUs from "@/app/components/sections/WhyChooseUs";
 import Process from "@/app/components/sections/Process";
@@ -27,9 +33,15 @@ export default function Home() {
       <Navbar />
       <main id="main-content" className="overflow-x-clip bg-[#050505] text-white">
         <Hero />
+        <TrackzyStory />
+        <TrackzyProduct />
         <About />
+        <IdeasToProducts />
         <Services />
+        <AiIntelligence />
         <AiShowcase />
+        <WebMobile />
+        <SystemsScene />
         <WhyChooseUs />
         <Process />
         <Portfolio />

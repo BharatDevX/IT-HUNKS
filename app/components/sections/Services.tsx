@@ -71,7 +71,7 @@ export default function Services() {
           description="From customer-facing products to internal business systems, we design, build and launch solutions around the way your business actually works."
         />
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
+        <div className="mt-14 grid gap-4 [perspective:1400px] sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
           {services.map(({ icon: Icon, number, title, text, features, cta }, index) => (
             <motion.article
               key={title}
@@ -79,8 +79,8 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.18 }}
               transition={{ duration: 0.65, delay: (index % 3) * 0.07 }}
-              whileHover={{ y: -7 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0b0d11] p-6 shadow-[0_20px_70px_rgba(0,0,0,.16)] sm:p-7"
+              whileHover={{ y: -7, rotateX: 2.5 }}
+              className="depth-card group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0b0d11] p-6 shadow-[0_20px_70px_rgba(0,0,0,.16)] sm:p-7"
             >
               <div className="absolute -right-16 -top-16 size-40 rounded-full bg-blue-500/10 blur-3xl transition-all duration-500 group-hover:bg-blue-500/20" />
               <div className="relative flex items-start justify-between gap-4">

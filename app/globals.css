@@ -211,6 +211,26 @@ a {
   }
 }
 
+/* Restrained gradient border that fades in on hover (masked so only the 1px edge shows). */
+.depth-card::after {
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  pointer-events: none;
+  content: "";
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.55), rgba(255, 255, 255, 0) 40%, rgba(34, 211, 238, 0.35));
+  opacity: 0;
+  transition: opacity 400ms ease;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+
+.depth-card:hover::after {
+  opacity: 1;
+}
+
 @media (max-width: 640px) {
   .hero-grid {
     background-size: 42px 42px;

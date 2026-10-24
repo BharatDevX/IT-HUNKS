@@ -8,11 +8,12 @@ import { useEffect, useState } from "react";
 
 const navLinks = [
   { name: "Home", href: "#home" },
+  { name: "Trackzy", href: "#trackzy" },
   { name: "Services", href: "#services" },
   { name: "Work", href: "#portfolio" },
   { name: "Process", href: "#process" },
   { name: "Pricing", href: "#pricing" },
-  { name: "FAQsnpm ", href: "#faq" },
+  { name: "FAQs", href: "#faq" },
 ];
 
 export default function Navbar() {
