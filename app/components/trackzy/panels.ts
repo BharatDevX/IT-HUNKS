@@ -5,7 +5,7 @@
  *
  * All figures are SAMPLE data for illustration only — never real employees, locations or customers.
  */
-import type { PanelId } from "./layout";
+import type { PanelId } from "./story-layout";
 
 export type PanelState = {
   /** Animation clock in seconds (frozen at 0 for reduced motion). */

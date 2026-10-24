@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { PANEL_SPECS } from "./panels";
-import type { PanelId } from "./layout";
+import type { PanelId } from "./story-layout";
 
 /**
  * Crisp, static 2D rendering of one of the Trackzy interface previews (same artwork the 3D scene uses).

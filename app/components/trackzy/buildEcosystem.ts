@@ -14,7 +14,7 @@ import {
   smoothstep,
   type PanelId,
   type PoseId,
-} from "./layout";
+} from "./story-layout";
 import { PANEL_SPECS } from "./panels";
 
 export type EcosystemOptions = {
